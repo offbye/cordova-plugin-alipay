@@ -14,7 +14,14 @@ xmlns:android="http://schemas.android.com/apk/res/android"
                 <param name="android-package" value="com.cordova.alipay.AliPay"/>
             </feature>
         </config-file>
-        <config-file target="AndroidManifest.xml" parent="/*">
+         <config-file target="AndroidManifest.xml" parent="/manifest">
+		      <uses-permission android:name="android.permission.INTERNET" />
+		      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+		      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+		      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+		      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest/application">
                  <!-- alipay sdk begin -->
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
@@ -24,11 +31,6 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
         <!-- alipay sdk end -->
-		      <uses-permission android:name="android.permission.INTERNET" />
-		      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-		      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-		      <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-		      <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
         </config-file> 
         <source-file src="src/android/libs/alipaySdk-20160516.jar" target-dir="libs"/>
         <source-file src="src/android/AliPay.java" target-dir="src/com/cordova/alipay" />
