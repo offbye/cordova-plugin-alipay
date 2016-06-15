@@ -5,8 +5,6 @@
 ###主要功能
 		
  - 主要功能是：服务器把订单信息签名后，调用该插件调用支付宝sdk进行支付，支付完成后如支付成功，还要去服务端去验证是否真正支付
-  
- - 虽然插件中我保留了在客户端签名调用支付的代码，但不建议更改使用 不建议更改使用 不建议更改使用 
 	
 ###准备工作
 
@@ -28,18 +26,22 @@
     		
 1.js调用插件方法
 ```js
-		//初始化
-		//注册监听
-	document.addEventListener("alipay.receiveMessage", function(event) {
-     	var resultStatus = event.resultStatus;
-     	//取到支付完成后的状态 resultStatus，如果订单支付成功，则去服务端去验证是否真正支付，防止客户端篡改伪造
-     	//9000  订单支付成功 ;8000 正在处理中 ;4000  订单支付失败 ;6001  用户中途取消 ;6002 网络连接出错
-    	}, false);  
+				
     	
-    //调用支付
-     var payInfo  = "xxxx";//payInfo 是服务端签名生成的订单信息，具体请参考官网进行签名处理
-     cordova.plugins.AliPay.pay(payInfo,function(e){},function(e){});
-	
-	
+    //第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理
+     var payInfo  = "xxxx";
+            	
+    //第二步：调用支付插件        	
+     cordova.plugins.AliPay.pay(payInfo,function success(e){},function error(e){});
+      
+	//e.resultStatus  状态代码  e.result  本次操作返回的结果数据 e.memo 提示信息
+	//e.resultStatus  9000  订单支付成功 ;8000 正在处理中  调用function success 
+	//e.resultStatus  4000  订单支付失败 ;6001  用户中途取消 ;6002 网络连接出错  调用function error
+	//当e.resultStatus为9000时，请去服务端验证支付结果
+	 			/**
+				 * 同步返回的结果必须放置到服务端进行验证（验证的规则请看https://doc.open.alipay.com/doc2/
+				 * detail.htm?spm=0.0.0.0.xdvAU6&treeId=59&articleId=103665&
+				 * docType=1) 建议商户依赖异步通知
+				 */
 		  
 ```

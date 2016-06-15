@@ -33,7 +33,5 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <source-file src="src/android/libs/alipaySdk-20160516.jar" target-dir="libs"/>
         <source-file src="src/android/AliPay.java" target-dir="src/com/cordova/alipay" />
         <source-file src="src/android/PayResult.java" target-dir="src/com/cordova/alipay" />
-        <source-file src="src/android/Base64.java" target-dir="src/com/cordova/alipay" /> 
-        <source-file src="src/android/SignUtils.java" target-dir="src/com/cordova/alipay" />
     </platform>
 </plugin>
