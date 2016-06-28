@@ -5,6 +5,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     version="0.0.1">
     <name>AliPay</name>
  
+    <preference name="PARTNER_ID"/>
     <js-module src="www/AliPay.js" name="AliPay">
      		<clobbers target="cordova.plugins.AliPay" />
     </js-module>
