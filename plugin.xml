@@ -36,4 +36,36 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <source-file src="src/android/AliPay.java" target-dir="src/com/cordova/alipay" />
         <source-file src="src/android/PayResult.java" target-dir="src/com/cordova/alipay" />
     </platform>
+    <platform name="ios">
+        <config-file target="config.xml" parent="/widget">
+        <preference name="partner" value="$PARTNER_ID" />
+        <feature name="AliPay">
+            <param name="ios-package" value="AlipayPlugin" />
+            <param name="onload" value="true" />
+          </feature>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="CFBundleURLTypes">
+          <array>
+              <dict>
+                  <key>CFBundleURLName</key>
+                  <string>alipay</string>
+                  <key>CFBundleURLSchemes</key>
+                  <array>
+                      <string>a$PARTNER_ID</string>
+                  </array>
+              </dict>
+          </array>
+        </config-file>
+
+        <framework src="CoreTelephony.framework" weak="true" />
+        <framework src="Security.framework" weak="true" />
+        <framework src="SystemConfiguration.framework" weak="true" />
+
+        <framework src="src/ios/lib/AlipaySDK.framework" custom="true" />
+
+        <header-file src="src/ios/AlipayPlugin.h"/>
+        <source-file src="src/ios/AlipayPlugin.m"/>
+
+    </platform>
 </plugin>

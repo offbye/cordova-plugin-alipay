@@ -10,15 +10,16 @@
 
  - 这里我默认环境已经安装完毕，只需要进行插件安装即可
 
-###Cordova/Phonegap 安装 （现仅支持Android。ios版本正在开发）
+###Cordova/Phonegap 安装 
 
-   在线：cordova plugin add https://github.com/chenyuanchn/cordova-plugin-alipay.git
+   在线：cordova plugin add https://github.com/chenyuanchn/cordova-plugin-alipay.git --variable PARTNER_ID=[你的商户PID可以在账户中查询]
+   （对于android系统，可以不传PARTNER_ID）
     
    本地：下载后再进行安装cordova plugin add 插件目录
    
 ### 支持平台
 
-		Android only
+		Android IOS
 		
 ### Android API
 
@@ -29,7 +30,8 @@
 				
     	
     //第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理
-     var payInfo  = "xxxx";
+     var payInfo  = "xxxx"
+;
             	
     //第二步：调用支付插件        	
      cordova.plugins.AliPay.pay(payInfo,function success(e){},function error(e){});
