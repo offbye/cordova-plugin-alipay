@@ -4,7 +4,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-alipay"
     version="0.0.1">
     <name>AliPay</name>
- 
+
     <preference name="PARTNER_ID"/>
     <js-module src="www/AliPay.js" name="AliPay">
      		<clobbers target="cordova.plugins.AliPay" />
@@ -32,8 +32,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
         <!-- alipay sdk end -->
-        </config-file> 
-        <source-file src="src/android/libs/alipaySdk-20160516.jar" target-dir="libs"/>
+        </config-file>
+        <source-file src="src/android/libs/alipaySdk-20160825.jar" target-dir="libs"/>
         <source-file src="src/android/AliPay.java" target-dir="src/com/cordova/alipay" />
         <source-file src="src/android/PayResult.java" target-dir="src/com/cordova/alipay" />
     </platform>
@@ -62,8 +62,12 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <framework src="CoreTelephony.framework" weak="true" />
         <framework src="Security.framework" weak="true" />
         <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="CoreMotion.framework" weak="true" />
+        <framework src="CFNetwork.framework" weak="true" />
+        <framework src="libc++.tbd" weak="true" />
 
         <framework src="src/ios/lib/AlipaySDK.framework" custom="true" />
+        <resource-file src="src/lib/AlipaySDK.bundle"/>
 
         <header-file src="src/ios/AlipayPlugin.h"/>
         <source-file src="src/ios/AlipayPlugin.m"/>
