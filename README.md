@@ -12,8 +12,6 @@ for mobile payment with Alipay App or Mobile Web. Requires cordova-android 4.0 o
 
  - 主要功能是：服务器把订单信息签名后，调用该插件调用支付宝sdk进行支付，支付完成后如支付成功，如果是9000状态，还要去服务端去验证是否真正支付
 
-###Cordova/Phonegap 安装
-
 ### Install 安装
 
 The following directions are for cordova-cli (most people).  
@@ -34,9 +32,8 @@ The following directions are for cordova-cli (most people).
 
 ### Android API
 
-+ 插件 API
+* js调用插件方法
 
-1.js调用插件方法
 ```js
 
     //第一步：订单在服务端签名生成订单信息，具体请参考官网进行签名处理
