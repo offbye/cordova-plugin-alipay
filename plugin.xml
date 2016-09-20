@@ -2,7 +2,7 @@
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
 xmlns:android="http://schemas.android.com/apk/res/android"
     id="cordova-plugin-alipay"
-    version="0.0.1">
+    version="1.0.1">
     <name>AliPay</name>
 
     <preference name="PARTNER_ID"/>
@@ -12,7 +12,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="AliPay">
-                <param name="android-package" value="com.cordova.alipay.AliPay"/>
+                <param name="android-package" value="com.offbye.cordova.alipay.AliPay"/>
             </feature>
         </config-file>
          <config-file target="AndroidManifest.xml" parent="/manifest">
@@ -34,8 +34,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <!-- alipay sdk end -->
         </config-file>
         <source-file src="src/android/libs/alipaySdk-20160825.jar" target-dir="libs"/>
-        <source-file src="src/android/AliPay.java" target-dir="src/com/cordova/alipay" />
-        <source-file src="src/android/PayResult.java" target-dir="src/com/cordova/alipay" />
+        <source-file src="src/android/AliPay.java" target-dir="src/com/offbye/cordova/alipay" />
+        <source-file src="src/android/PayResult.java" target-dir="src/com/offbye/cordova/alipay" />
     </platform>
     <platform name="ios">
         <config-file target="config.xml" parent="/widget">

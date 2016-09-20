@@ -1,4 +1,4 @@
-package com.cordova.alipay;
+package com.offbye.cordova.alipay;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -61,10 +61,10 @@ public class AliPay extends CordovaPlugin {
 
 			 //订单信息在服务端签名后返回
 			 final String payInfo = args.getString(0);
-			
-			 if (payInfo == null || payInfo.equals("") || payInfo.equals("null")) { 
+
+			 if (payInfo == null || payInfo.equals("") || payInfo.equals("null")) {
 				callbackContext.error("Please enter order information");
-			 	return true; 
+			 	return true;
 			 }
 
 			cordova.getThreadPool().execute(new Runnable() {
