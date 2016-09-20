@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "description": "Makes your Cordova application enable to use the Alipay SDK",
   "cordova": {
-    "id": "cordova-plugin-alipay",
+    "id": "cordova-plugin-offbye-alipay",
     "platforms": [
       "android", "ios"
     ]
