@@ -67,7 +67,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <framework src="libc++.tbd" weak="true" />
 
         <framework src="src/ios/lib/AlipaySDK.framework" custom="true" />
-        <resource-file src="src/lib/AlipaySDK.bundle"/>
+        <resource-file src="src/ios/lib/AlipaySDK.bundle"/>
 
         <header-file src="src/ios/AlipayPlugin.h"/>
         <source-file src="src/ios/AlipayPlugin.m"/>
