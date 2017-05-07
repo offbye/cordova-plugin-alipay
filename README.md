@@ -20,7 +20,7 @@ The following directions are for cordova-cli (most people).
 * Add this plugin
 
   ```sh
-  cordova plugin add https://github.com/offbye/cordova-plugin-alipay.git --variable PARTNER_ID=[你的商户PID可以在账户中查询]
+  cordova plugin add https://github.com/Instantaneous/cordova-plugin-alipay.git --variable PARTNER_ID=[你的商户PID可以在账户中查询]
   ```
   （对于android，可以不传PARTNER_ID）
 
