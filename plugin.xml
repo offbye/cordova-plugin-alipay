@@ -33,7 +33,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         </activity>
         <!-- alipay sdk end -->
         </config-file>
-        <source-file src="src/android/libs/alipaySdk-20160825.jar" target-dir="libs"/>
+        <source-file src="src/android/libs/alipaySingle-20170510.jar" target-dir="libs"/>
         <source-file src="src/android/AliPay.java" target-dir="src/com/offbye/cordova/alipay" />
         <source-file src="src/android/PayResult.java" target-dir="src/com/offbye/cordova/alipay" />
     </platform>
