@@ -42,7 +42,7 @@ The following directions are for cordova-cli (most people).
    
    offline：download and install via `cordova plugin add  YOUR_DIR`
 
-### support platforms 支持平台
+### Support platforms 支持平台
 
 		Android IOS
 
