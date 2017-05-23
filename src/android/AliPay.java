@@ -11,6 +11,9 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+import java.util.Map;
+
+import com.alipay.sdk.app.EnvUtils;
 
 import com.alipay.sdk.app.PayTask;
 
@@ -24,13 +27,13 @@ public class AliPay extends CordovaPlugin {
 			switch (msg.what) {
 			case SDK_PAY_FLAG: {
 				String resultStatus = (String) msg.obj;
-				String msg = "支付失败";
+				String toast = "支付失败";
 				if (TextUtils.equals(resultStatus, "9000")) {
-					msg = "支付成功";
+					toast = "支付成功";
 				} else if (TextUtils.equals(resultStatus, "8000")) {
-					msg = "支付结果确认中";
+					toast = "支付结果确认中";
 				}
-				Toast.makeText(cordova.getActivity(), msg , Toast.LENGTH_SHORT).show();
+				Toast.makeText(cordova.getActivity(), toast , Toast.LENGTH_SHORT).show();
 				break;
 			}
 			default:
@@ -53,32 +56,35 @@ public class AliPay extends CordovaPlugin {
 			 }
 
 			cordova.getThreadPool().execute(new Runnable() {
-				Log.i(TAG, " 构造PayTask 对象 ");
+		        public void run() {
 
-				if(isSandbox) {
-					Log.i(TAG, " 使用沙箱 ");
+					Log.i(TAG, " 构造PayTask 对象 ");
+
+					if(isSandbox) {
+						Log.i(TAG, " 使用沙箱 ");
+						EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
+					}
 					EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
-				}
-          		EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
-          		PayTask alipay = new PayTask(cordova.getActivity());
-				Log.i(TAG, " 调用支付接口，获取支付结果 ");
+					PayTask alipay = new PayTask(cordova.getActivity());
+					Log.i(TAG, " 调用支付接口，获取支付结果 ");
 
-		        Map<String,String> res = alipay.payV2(payInfo, true);
-		        String resultStatus = res.get("resultStatus");
-		        String result = res.get("result");
-		        String memo = res.get("memo");
+					Map<String,String> res = alipay.payV2(payInfo, true);
+					String resultStatus = res.get("resultStatus");
+					String result = res.get("result");
+					String memo = res.get("memo");
 
-				// 更新主ui的Toast
-				Message msg = new Message();
-				msg.what = SDK_PAY_FLAG;
-				msg.obj = resultStatus;
-				mHandler.sendMessage(msg);
+					// 更新主ui的Toast
+					Message msg = new Message();
+					msg.what = SDK_PAY_FLAG;
+					msg.obj = resultStatus;
+					mHandler.sendMessage(msg);
 
-				if ("9000".equals(resultStatus) || "8000".equals(resultStatus)) {
-					// 8000：等待结果确认。要在success的callback中server端确认
-					callbackContext.success(result);
-				} else {
-					callbackContext.error(memo);
+					if ("9000".equals(resultStatus) || "8000".equals(resultStatus)) {
+						// 8000：等待结果确认。要在success的callback中server端确认
+						callbackContext.success(result);
+					} else {
+						callbackContext.error(memo);
+					}
 				}
 			});
 			return true;
