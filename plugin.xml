@@ -59,11 +59,18 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         </config-file>
 
         <framework src="CoreTelephony.framework" weak="true" />
+        <framework src="QuartzCore.framework" weak="true" />
         <framework src="Security.framework" weak="true" />
         <framework src="SystemConfiguration.framework" weak="true" />
+        <framework src="CoreText.framework" weak="true" />
+        <framework src="CoreGraphics.framework" weak="true" />
+        <framework src="UIKit.framework" weak="true" />
+        <framework src="Foundation.framework" weak="true" />
         <framework src="CoreMotion.framework" weak="true" />
         <framework src="CFNetwork.framework" weak="true" />
         <framework src="libc++.tbd" weak="true" />
+        <framework src="libz.tbd" weak="true" />
+
 
         <framework src="src/ios/lib/AlipaySDK.framework" custom="true" />
         <resource-file src="src/lib/AlipaySDK.bundle"/>
